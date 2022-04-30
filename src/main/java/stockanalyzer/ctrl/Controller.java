@@ -67,8 +67,8 @@ public class Controller {
 						Stock stock = getData("TWTR");
 						stock.print();
 					} catch (YahooFinanceException e) {
-						System.out.println(e.getMessage());
-						throw new YahooFinanceException(" ++++  ++++  Error with the Twitter-Stock++++  ++++  ");
+						//System.out.println(e.getMessage());
+						throw new YahooFinanceException(e.getMessage());
 					}
 					break;
 				case "TSLA":
@@ -78,8 +78,8 @@ public class Controller {
 						stock.print();
 						//throw new YahooFinanceException("TEST ERROR in reguar run");
 					} catch (YahooFinanceException e) {
-						System.out.println(e.getMessage());
-						throw new YahooFinanceException(" ++++  ++++  Error with the Tesla-Stock++++  ++++  ");
+						//System.out.println(e.getMessage());
+						throw new YahooFinanceException(e.getMessage());
 					}
 					break;
 				case "Error":
@@ -91,8 +91,8 @@ public class Controller {
 						Stock stock = getData(ticker);
 						stock.print();
 					} catch (YahooFinanceException e) {
-						System.out.println(e.getMessage());
-						throw new YahooFinanceException(" ++++  ++++  Error with your Personal Stock++++  ++++  ");
+						//System.out.println(e.getMessage());
+						throw new YahooFinanceException(e.getMessage());
 					}
 					break;
 			}
@@ -190,7 +190,7 @@ public class Controller {
 		return size;
 	}
 
-	public Result getHighestPrice(List<Result> results)throws YahooFinanceException{
+	public Result getHighestPrice(List<Result> results) throws YahooFinanceException{
 		double highestPrice = results.stream()
 					.mapToDouble(h -> h.getAsk().doubleValue()).max().orElse(-1);
 
